@@ -78,6 +78,95 @@
       
     }
 
+        /* кликабельная картинка
+        */
+.interactive-container {
+            position: relative;
+            max-width: 900px;
+            margin: 40px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            line-height: 1.6;
+            font-family: 'Comfortaa', sans-serif;
+        }
+
+        .main-image {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Стиль пульсирующего индикатора */
+        .hotspot {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-color: var(--deep-accent);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border: 2px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        /* Анимация пульсации */
+        .hotspot::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: var(--deep-accent);
+            opacity: 0.6;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        /* Всплывающее окошко (Tooltip) */
+        .tooltip {
+            position: absolute;
+            background: var(--white);
+            color: var(--text-main);
+            padding: 15px;
+            border-radius: 12px;
+            width: 220px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 100;
+            font-size: 0.9em;
+            border-bottom: 3px solid var(--accent-color);
+            pointer-events: none;
+        }
+
+        .tooltip.active {
+            display: block;
+        }
+
+        .tooltip b {
+            color: var(--deep-accent);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Координаты точек (настраиваются под картинку) */
+        .point-1 { top: 30%; left: 15%; } /* Палитра */
+        .point-2 { top: 40%; left: 45%; } /* Область кода */
+        .point-3 { top: 25%; left: 80%; } /* Сцена */
+        .point-4 { top: 75%; left: 75%; } /* Спрайты */
+        .point-5 { top: 75%; left: 92%; } /* Фоны */
+
+        
     /* Алгоритм в жизни */
     .algo-life {
         display: flex;
@@ -220,8 +309,18 @@
         <section class="section">
             <h2>Интерфейс scratch</h2>
             <p>Слева — наши блоки-команды, в центре — поле для творчества, справа — результат.</p>
-            <img src="https://robx.org/wp-content/uploads/2021/07/image-36.png" alt="интерфейс scratch" class="interface-img">
-          <div class="steps-list" style="margin-top: 20px; border-style: solid; border-width: 1px;">
+            <div class="interactive-container" id="scratch-map">
+    <img src="https://raw.githubusercontent.com/nazarina/lesson-1/main/image-36.webp" alt="Интерфейс Scratch" class="main-image">
+
+    <!-- Точка 1 -->
+…
+    // Закрытие при клике в любое место
+    document.addEventListener('click', function() {
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach(t => t.classList.remove('active'));
+    });
+</script>
+        <!--  <div class="steps-list" style="margin-top: 20px; border-style: solid; border-width: 1px;">
         <ul style="list-style-type: none; padding: 0;">
             <li><strong>1. палитра блоков</strong> — меню со всеми командами, разделенными по цветам.</li>
             <li><strong>2. область кода</strong> — место, где ты соединяешь блоки в алгоритм.</li>
@@ -229,7 +328,7 @@
             <li><strong>4. спрайты</strong> — список всех персонажей твоего проекта.</li>
             <li><strong>5. фоны</strong> — настройки места действия (декорации).</li>
         </ul>
-    </div>
+    </div>-->
         </section>
 
         <section class="section project-box">
