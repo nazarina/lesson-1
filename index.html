@@ -309,18 +309,68 @@
         <section class="section">
             <h2>Интерфейс scratch</h2>
             <p>Слева — наши блоки-команды, в центре — поле для творчества, справа — результат.</p>
-            <div class="interactive-container" id="scratch-map">
+  <div class="interactive-container" id="scratch-map">
     <img src="https://raw.githubusercontent.com/nazarina/lesson-1/main/image-36.webp" alt="Интерфейс Scratch" class="main-image">
 
     <!-- Точка 1 -->
-…
+    <div class="hotspot point-1" onclick="toggleTooltip(event, 't1')">1</div>
+    <div class="tooltip" id="t1" style="top: 35%; left: 18%;">
+        <b>1. Палитра блоков</b>
+        Меню со всеми командами, разделенными по цветам.
+    </div>
+
+    <!-- Точка 2 -->
+    <div class="hotspot point-2" onclick="toggleTooltip(event, 't2')">2</div>
+    <div class="tooltip" id="t2" style="top: 45%; left: 48%;">
+        <b>2. Область кода</b>
+        Место, где ты соединяешь блоки в алгоритм.
+    </div>
+
+    <!-- Точка 3 -->
+    <div class="hotspot point-3" onclick="toggleTooltip(event, 't3')">3</div>
+    <div class="tooltip" id="t3" style="top: 10%; left: 60%;">
+        <b>3. Сцена</b>
+        Экран, на котором твой герой оживает.
+    </div>
+
+    <!-- Точка 4 -->
+    <div class="hotspot point-4" onclick="toggleTooltip(event, 't4')">4</div>
+    <div class="tooltip" id="t4" style="top: 60%; left: 55%;">
+        <b>4. Спрайты</b>
+        Список всех персонажей твоего проекта.
+    </div>
+
+    <!-- Точка 5 -->
+    <div class="hotspot point-5" onclick="toggleTooltip(event, 't5')">5</div>
+    <div class="tooltip" id="t5" style="top: 60%; left: 75%;">
+        <b>5. Фоны</b>
+        Настройки места действия (декорации).
+    </div>
+</div>
+
+<script>
+    function toggleTooltip(event, id) {
+        // Закрываем все открытые тултипы
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach(t => {
+            if (t.id !== id) t.classList.remove('active');
+        });
+
+        // Переключаем текущий
+        const target = document.getElementById(id);
+        target.classList.toggle('active');
+        
+        // Останавливаем всплытие, чтобы клик по документу мог закрыть окно
+        event.stopPropagation();
+    }
+
     // Закрытие при клике в любое место
     document.addEventListener('click', function() {
         const tooltips = document.querySelectorAll('.tooltip');
         tooltips.forEach(t => t.classList.remove('active'));
     });
 </script>
-        <!--  <div class="steps-list" style="margin-top: 20px; border-style: solid; border-width: 1px;">
+     <div class="steps-list" style="margin-top: 20px; border-style: solid; border-width: 1px;">
         <ul style="list-style-type: none; padding: 0;">
             <li><strong>1. палитра блоков</strong> — меню со всеми командами, разделенными по цветам.</li>
             <li><strong>2. область кода</strong> — место, где ты соединяешь блоки в алгоритм.</li>
@@ -328,7 +378,7 @@
             <li><strong>4. спрайты</strong> — список всех персонажей твоего проекта.</li>
             <li><strong>5. фоны</strong> — настройки места действия (декорации).</li>
         </ul>
-    </div>-->
+    </div>
         </section>
 
         <section class="section project-box">
